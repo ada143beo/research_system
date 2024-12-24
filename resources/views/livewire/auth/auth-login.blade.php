@@ -3,7 +3,7 @@
         {{-- Logo and Header --}}
         <div class="text-center mb-4">
             <img src="{{ asset('assets/images/RDS_Logo.png') }}" class="d-block mx-auto" style="width: 150px" alt="RDS Logo">
-            <h4 class="fw-semibold mt-3">Research and Development Services <br>(R&DS)</h4>
+            <h4 class="fw-semibold mt-3">Research and Development Services</h4>
         </div>
 
         {{-- Divider --}}
@@ -34,7 +34,7 @@
 
         {{-- Forgot Password Link --}}
         <div class="text-center mt-3">
-            <a href="{{ route('password.request') }}" class="text-primary fw-medium">Forgot Password?</a>
+            <a href="#" onclick="validateEmail()" class="text-primary fw-medium">Forgot Password?</a>
         </div>
 
         {{-- Register Link --}}
@@ -45,3 +45,16 @@
         </div>
     </div>
 </div>
+
+{{-- JavaScript to Validate Email --}}
+<script>
+    function validateEmail() {
+        let email = document.getElementById('email').value;
+
+        if (!email) {
+            alert('Please enter your email address.');
+        } else {
+            window.location.href = `{{ route('password.request') }}?email=` + encodeURIComponent(email);
+        }
+    }
+</script>
