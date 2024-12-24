@@ -1,7 +1,8 @@
 <?php
 
 use App\Livewire\Auth\AuthLogin;
-use App\Livewire\Auth\AuthRegistration;
+use App\Livewire\Auth\AuthRegistration1;
+use App\Livewire\Auth\AuthRegistration2;
 use App\Livewire\Director\DirectorDashboard;
 use App\Livewire\Director\DirectorFormatCompliance;
 use App\Livewire\Director\DirectorSetSchedule;
@@ -19,19 +20,21 @@ use App\Livewire\Rec\RecToReview;
 use App\Livewire\Tec\TecDashboard;
 use App\Livewire\Urec\UrecDashboard;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Auth\ForgotPassword;
 
 
 
+Route::get('/', HomePage::class)->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/register', AuthRegistration::class)->name('register');
+Route::get('/register', AuthRegistration1::class)->name('register');
+Route::get('/register-step2', AuthRegistration2::class)->name('register.step2');
+Route::get('/success', fn() => 'Registration Successful!');
 Route::get('/login', AuthLogin::class)->name('login');
 
+Route::get('/forgot-password', ForgotPassword::class)->name('password.request');
+
 //HOMEPAGE
-Route::get('/homepage', HomePage::class)->name('home');
+Route::get('/homepage', HomePage::class)->name('homepage');
 
 // DIRECTOR
 Route::get('/director-dashboard', DirectorDashboard::class)->name('director-dashboard');

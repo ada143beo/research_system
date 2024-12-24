@@ -8,39 +8,39 @@
 
         {{-- Divider --}}
         <hr class="mb-4">
-        <h5 class="text-center fw-medium mb-3">Login</h5>
+        <h5 class="text-center fw-medium mb-3">Forgot Password</h5>
+        <p class="text-muted text-center">Enter your email to reset your password.</p>
+
+        {{-- Success or Error Message --}}
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @elseif (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
 
         {{-- Form --}}
-        <form>
-            @include('includes.errorhandler')
-
+        <form wire:submit.prevent="sendResetLink">
             {{-- Email Input --}}
             <div class="mb-3">
                 <label for="email" class="form-label">Email Address</label>
                 <input type="email" id="email" class="form-control p-3 rounded-3" placeholder="Enter your email" wire:model='email'>
+                @error('email') <div class="text-danger mt-2">{{ $message }}</div> @enderror
             </div>
 
-            {{-- Password Input --}}
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" class="form-control p-3 rounded-3" placeholder="Enter your password" wire:model='password'>
-            </div>
-
-            {{-- Login Button --}}
+            {{-- Submit Button --}}
             <div class="d-grid gap-2 mt-3">
-                <button type="button" wire:click='login' class="btn btn-primary btn-lg rounded-3">Login</button>
+                <button type="submit" class="btn btn-primary btn-lg rounded-3">Send Password Reset Link</button>
             </div>
         </form>
 
-        {{-- Forgot Password Link --}}
+        {{-- Back to Login --}}
         <div class="text-center mt-3">
-            <a href="{{ route('password.request') }}" class="text-primary fw-medium">Forgot Password?</a>
-        </div>
-
-        {{-- Register Link --}}
-        <div class="text-center mt-3">
-            <p class="text-muted">Don't have an account?
-                <a href="{{ route('register') }}" class="text-primary fw-medium">Register</a>
+            <p class="text-muted">Remember your password?
+                <a href="{{ route('login') }}" class="text-primary fw-medium">Login</a>
             </p>
         </div>
     </div>

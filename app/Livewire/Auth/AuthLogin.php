@@ -2,48 +2,57 @@
 
 namespace App\Livewire\Auth;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
+use App\Models\UserRole;
 
 class AuthLogin extends Component
 {
-    #[Layout('components.layouts.home-login-reg')]
-
-    #[Rule('required|email')]
     public $email;
-
-    #[Rule('required|min:6')]
     public $password;
+
+    protected $rules = [
+        'email' => 'required|email',
+        'password' => 'required|min:6',
+    ];
 
     public function login()
     {
         $this->validate();
 
-        if (Auth::attempt([
-            'email' => $this->email,
-            'password' => $this->password
-        ])) {
-            // CODE FOR THE ROLES
-            // dd(Auth::user()->id);
-            /*$res = DB::table('user_roles')
-                    ->join('roles', 'roles.id', '=', 'user_roles.role_id')
-                    ->where('user_id', '=', Auth::user()->id)
-                    ->first();
-            //dd($res->role_name);
-            if($res->role_name == 'Director')
-            {
-                return redirect()->route('director-dashboard');
-            }*/
-            // elseif($res->rolename == 'Faculty')
-            //     // return redirect()->route('director-dashboard');
-            // return redirect()->route('director-dashboard');
+
+        if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+            $user = Auth::user();
 
 
+            $userRole = UserRole::where('user_id', $user->id)->first();
+
+            if ($userRole && $userRole->role) {
+
+                switch ($userRole->role->role_name) {
+                    case 'Faculty':
+                        return redirect()->route('faculty');
+                    case 'UREC':
+                        return redirect()->route('urec');
+                    case 'REC':
+                        return redirect()->route('rec');
+                    case 'TEC':
+                        return redirect()->route('tec');
+                    case 'Research Director':
+                        return redirect()->route('director-dashboard');
+                    default:
+                        Auth::logout();
+                        session()->flash('error', 'Unauthorized access.');
+                        return redirect()->route('login');
+                }
+            } else {
+                Auth::logout();
+                session()->flash('error', 'Role not assigned.');
+                return redirect()->route('login');
+            }
         }
-        session()->flash('status', 'Invalid Email or Password');
+
+        session()->flash('error', 'Invalid credentials.');
     }
 
     public function render()

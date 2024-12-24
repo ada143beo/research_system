@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('role'); /**ini yung dinagdag */
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -21,31 +20,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-        //**start */
-        $data = [
-            [
-                'email' => 'admin@catsu.edu.ph',
-                'role' => 'Admin',
-                'password' => Hash::make('open123'),
-            ],
-
-            [
-                'email' => 'faculty@catsu.edu.ph',
-                'role' => 'Faculty',
-                'password' => Hash::make('open123'),
-            ],
-
-            [
-                'email' => 'tec@catsu.edu.ph',
-                'role' => 'TEC',
-                'password' => Hash::make('open123'),
-            ],
-        ];
-
-        foreach ($data as $item) {
-            User::create($item);
-        }
-        //end
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
