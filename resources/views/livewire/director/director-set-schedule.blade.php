@@ -32,14 +32,6 @@
                         Set Schedules
                     </a>
                 </li>
-                {{-- Approved Proposals --}}
-                <li class="nav-item">
-                    <a href="{{ route('rec-approved') }}"
-                        class="btn btn-light text-dark d-flex align-items-center mb-2">
-                        <i class="bi bi-check-circle me-2"></i>
-                        Approved
-                    </a>
-                </li>
             </ul>
         </nav>
         <main class="container-fluid p-4">

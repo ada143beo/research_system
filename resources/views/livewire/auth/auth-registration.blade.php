@@ -36,7 +36,7 @@
                     <input type="button" wire:click='register' value="Register" class="btn btn-primary">
                 </div>
             @else
-                <p>Not Pre-registered</p>
+                <p></p>
             @endif
         </div>
     </div>

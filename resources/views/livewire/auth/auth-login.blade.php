@@ -23,6 +23,9 @@
                     <a href="{{ route('register') }}" class="btn btn-secondary">Sign up</a>
                 </div>
             </form>
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="{{ route('forgot-password') }}" class="text-center mt-3">Forgot Password?</a>
+            </div>
         </div>
     </div>
 </div>

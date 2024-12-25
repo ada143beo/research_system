@@ -43,6 +43,8 @@
                     <div class="ms-auto d-flex align-items-center">
                         <label for="role" class="text-white me-2">Login as:</label>
                         <select class="form-select bg-dark text-white border-light" style="width: auto;">
+                            <!--<option value="rec">Faculty</option>-->
+                            <option value="research_director">Research Director</option>
                             <option value="rec">REC</option>
                             <option value="tec">TEC</option>
                             <option value="urec">UREC</option>

@@ -1,10 +1,15 @@
 <?php
 
+use App\Livewire\Auth\AuthForgotPassword;
 use App\Livewire\Auth\AuthLogin;
 use App\Livewire\Auth\AuthRegistration;
+use App\Livewire\Director\DirectorContractStatus;
 use App\Livewire\Director\DirectorDashboard;
 use App\Livewire\Director\DirectorFormatCompliance;
+use App\Livewire\Director\DirectorManageProfile;
+use App\Livewire\Director\DirectorQuarterlyUpdate;
 use App\Livewire\Director\DirectorSetSchedule;
+use App\Livewire\Director\DirectorTerminalReport;
 use App\Livewire\Faculty\FacultyCompletedResearch;
 use App\Livewire\Faculty\FacultyCreateProposal;
 use App\Livewire\Faculty\FacultyDashboard;
@@ -12,6 +17,7 @@ use App\Livewire\Faculty\FacultyMain;
 use App\Livewire\Faculty\FacultyOngoingResearch;
 use App\Livewire\Faculty\FacultyTrackProposal;
 use App\Livewire\Home\HomePage;
+use App\Livewire\RC\RCDashboard;
 use App\Livewire\Rec\RecApproved;
 use App\Livewire\Rec\RecDashboard;
 use App\Livewire\Rec\RecRevision;
@@ -23,12 +29,21 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
+
+
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+//AUTH
 Route::get('/register', AuthRegistration::class)->name('register');
 Route::get('/login', AuthLogin::class)->name('login');
+Route::get('/forgot-password', AuthForgotPassword::class)->name('forgot-password');
+
 
 //HOMEPAGE
 Route::get('/homepage', HomePage::class)->name('home');
@@ -37,6 +52,13 @@ Route::get('/homepage', HomePage::class)->name('home');
 Route::get('/director-dashboard', DirectorDashboard::class)->name('director-dashboard');
 Route::get('/director/format-compliance', DirectorFormatCompliance::class)->name('director-format-compliance');
 Route::get('/director/set-schedule', DirectorSetSchedule::class)->name('director-set-schedule');
+Route::get('/director/contract-status', DirectorContractStatus::class)->name('director-contract-status');
+Route::get('/director/quarterly-updates', DirectorQuarterlyUpdate::class)->name('director-quarterly-updates');
+Route::get('/director/terminal-reports', DirectorTerminalReport::class)->name('director-terminal-reports');
+Route::get('/director/manage-profiles', DirectorManageProfile::class)->name('director-manage-profiles');
+
+//RC
+Route::get('rc-dashboard', RCDashboard::class)->name('rc-dashboard');
 
 //FACULTY
 Route::get('/faculty', FacultyMain::class)->name('faculty');

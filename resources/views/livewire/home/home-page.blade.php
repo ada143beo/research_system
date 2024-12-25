@@ -1,5 +1,5 @@
 <div>
-    {{-- Navbar --}}
+    {{-- Navbar  --}}
     {{--  <nav class="navbar navbar-expand-lg bg-body-tertairy sticky-top"> --}}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container-fluid">

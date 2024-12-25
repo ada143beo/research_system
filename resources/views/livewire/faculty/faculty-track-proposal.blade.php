@@ -109,7 +109,7 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <span>Format Compliance</span>
                                 <div class="d-flex align-items-center">
-                                    <span class="badge bg-warning me-3">Under Review</span>
+                                    <span class="btn btn-sm bg-warning text-white me-3">Under Review</span>
                                     <a href="#" class="text-muted" data-bs-toggle="modal"
                                         data-bs-target="#commentsModal">
                                         <i class="bi bi-chat-dots"></i>
@@ -153,7 +153,7 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <span>Contract Signing</span>
                                 <div class="d-flex align-items-center">
-                                    <span class="badge bg-secondary">Pending</span>
+                                    <button class="btn btn-sm btn-secondary" disabled>Pending</button>
                                 </div>
                             </li>
                         </ul>

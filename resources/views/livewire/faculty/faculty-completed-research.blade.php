@@ -58,7 +58,7 @@
             <main class="container-fluid p-4">
                 <h3 class="text-center fw-bold mb-4">Completed Research</h3>
                 <div class="card m-3">
-                    <div class="card-header text-bg-dark">
+                    <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
                         <h5>Satellite Mapping of Coastal Development in Catanduanes: Insights and Impacts</h5>
                     </div>
                     <div class="card-body">
