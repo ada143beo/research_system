@@ -12,7 +12,7 @@
                                 Dashboard
                             </a>
                         </li>
-                    </ul>
+                    </ul>   
                 </li>
                 <hr>
                 <li class="nav-item">
