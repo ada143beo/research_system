@@ -71,7 +71,92 @@
         </nav>
 
         <main class="container-fluid p-4">
+            <h3 class="text-center mb-4 fw-bold">Quarterly Status Monitoring</h3>
+
+            {{-- Table for Research Monitoring --}}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="bg-secondary text-white">
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Researcher</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{-- Example Row --}}
+                        <tr>
+                            <td>1</td>
+                            <td>Sample Research Title</td>
+                            <td>John Doe</td>
+                            <td>
+                                {{-- Progress Bar for Status --}}
+                                <div class="progress mt-2" style="height: 20px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%;"
+                                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                        75%
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                    data-bs-target="#viewReportsModal">View Reports</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            {{-- Modal for Viewing Reports --}}
+            <div class="modal fade" id="viewReportsModal" tabindex="-1" aria-labelledby="viewReportsModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="viewReportsModalLabel">Quarterly Reports</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{-- Research Information --}}
+                            <h5>Sample Research Title</h5>
+                            <hr>
+                            <h6><strong>Research Information:</strong></h6>
+                            <p><strong>Category:</strong> Science and Technology</p>
+                            <p><strong>Start Date:</strong> January 15, 2024</p>
+                            <p><strong>Estimated End Date:</strong> December 15, 2024</p>
+                            <hr>
+                            {{-- Quarterly Reports --}}
+                            <h6><strong>Quarterly Reports:</strong></h6>
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    First Quarter Report
+                                    <button class="btn btn-sm btn-outline-primary">Download</button>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Second Quarter Report
+                                    <button class="btn btn-sm btn-outline-primary">Download</button>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Third Quarter Report
+                                    <button class="btn btn-sm btn-outline-primary">Download</button>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Fourth Quarter Report
+                                    <button class="btn btn-sm btn-outline-primary">Download</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
+
+
+
 
     </div>
 </div>

@@ -106,7 +106,7 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 In-House Review Schedule
                                 <button class="btn btn-sm btn-secondary" disabled>No Schedule Yet</button>
-                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal"
                                     data-bs-target="#scheduleModal">See Schedule</button>
                             </li>
                             {{---- Final Terminal Report ----}}

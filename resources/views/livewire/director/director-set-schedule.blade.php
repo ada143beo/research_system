@@ -109,7 +109,7 @@
                 <div class="tab-pane fade show active" id="panel-to-schedule" role="tabpanel"
                     aria-labelledby="panel-to-schedule-tab">
                     <h3>Panel Proposal - To Schedule</h3>
-                    <table class="table table-striped table-hover">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>

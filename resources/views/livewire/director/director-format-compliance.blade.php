@@ -45,7 +45,8 @@
 
                 {{-- Quarterly Updates --}}
                 <li class="nav-item">
-                    <a href="{{ route('director-quarterly-updates') }}" class="btn btn-light text-dark d-flex align-items-center mb-2">
+                    <a href="{{ route('director-quarterly-updates') }}"
+                        class="btn btn-light text-dark d-flex align-items-center mb-2">
                         <i class="bi bi-clock-history me-2"></i>
                         Quarterly Updates
                     </a>
@@ -53,7 +54,8 @@
 
                 {{-- Terminal Reports --}}
                 <li class="nav-item">
-                    <a href="{{ route('director-terminal-reports') }}" class="btn btn-light text-dark d-flex align-items-center mb-2">
+                    <a href="{{ route('director-terminal-reports') }}"
+                        class="btn btn-light text-dark d-flex align-items-center mb-2">
                         <i class="bi bi-journal-check me-2"></i>
                         Terminal Reports
                     </a>
@@ -63,7 +65,8 @@
 
                 {{-- Manage Profiles --}}
                 <li class="nav-item">
-                    <a href="{{ route('director-manage-profiles') }}" class="btn btn-light text-dark d-flex align-items-center mb-2">
+                    <a href="{{ route('director-manage-profiles') }}"
+                        class="btn btn-light text-dark d-flex align-items-center mb-2">
                         <i class="bi bi-person-lines-fill me-2"></i>
                         Manage Profiles
                     </a>
@@ -86,12 +89,6 @@
                         Need Revision
                     </button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="approved-tab" data-bs-toggle="tab" data-bs-target="#approved"
-                        type="button" role="tab" aria-controls="approved" aria-selected="false">
-                        Approved
-                    </button>
-                </li>
             </ul>
 
             {{-- Tab Content --}}
@@ -100,46 +97,49 @@
                 <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
                     <div>
                         <h2 class="mb-4">Proposals Pending Review</h2>
+                        <div class="table-responsive">
+                            {{-- Proposals Table --}}
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Title</th>
+                                        <th>Researcher</th>
+                                        <th>Submission Date</th>
+                                        <th>Type</th> {{-- Newly Submitted or Resubmitted --}}
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{-- Proposal Row 1 --}}
+                                    <tr>
+                                        <td>1</td>
+                                        <td>AI in Healthcare</td>
+                                        <td>John Doe</td>
+                                        <td>Nov 20, 2024</td>
+                                        <td>New Submission</td> {{-- Type of Submission --}}
+                                        <td>
+                                            {{-- View Details Button --}}
+                                            <button class="btn btn-outline-primary btn-sm me-2" data-bs-toggle="modal"
+                                                data-bs-target="#viewDetailsModal1">
+                                                View Details
+                                            </button>
+                                            {{-- Review Button --}}
+                                            <button class="btn btn-warning btn-sm text-white me-2" data-bs-toggle="modal"
+                                                data-bs-target="#submitReviewModal1">
+                                                Review
+                                            </button>
+                                            {{-- Comment Button --}}
+                                            <a class="text-muted" data-bs-toggle="modal"
+                                                data-bs-target="#commentsModal1">
+                                                <i class="bi-chat-dots"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                        {{-- Proposals Table --}}
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Title</th>
-                                    <th>Researcher</th>
-                                    <th>Submission Date</th>
-                                    <th>Type</th> {{-- Newly Submitted or Resubmitted --}}
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{-- Proposal Row 1 --}}
-                                <tr>
-                                    <td>1</td>
-                                    <td>AI in Healthcare</td>
-                                    <td>John Doe</td>
-                                    <td>Nov 20, 2024</td>
-                                    <td>New Submission</td> {{-- Type of Submission --}}
-                                    <td>
-                                        {{-- View Details Button --}}
-                                        <button class="btn btn-primary btn-sm me-2" data-bs-toggle="modal"
-                                            data-bs-target="#viewDetailsModal1">
-                                            View Details
-                                        </button>
-                                        {{-- Review Button --}}
-                                        <button class="btn btn-warning btn-sm me-2" data-bs-toggle="modal"
-                                            data-bs-target="#submitReviewModal1">
-                                            Review
-                                        </button>
-                                        {{-- Comment Button --}}
-                                        <a class="text-muted" data-bs-toggle="modal" data-bs-target="#commentsModal1">
-                                            <i class="bi-chat-dots"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
 
                     {{-- View Details Modal --}}
@@ -272,12 +272,14 @@
                     </table>
                 </div>
                 {{-- View Details Modal --}}
-                <div class="modal fade" id="viewDetailsModal" tabindex="-1" aria-labelledby="viewDetailsModalLabel" aria-hidden="true">
+                <div class="modal fade" id="viewDetailsModal" tabindex="-1" aria-labelledby="viewDetailsModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="viewDetailsModalLabel">Proposal Details</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <p><strong>Title:</strong> AI in Healthcare</p>
@@ -291,12 +293,14 @@
                 </div>
 
                 {{-- Comments Modal --}}
-                <div class="modal fade" id="commentsModal" tabindex="-1" aria-labelledby="commentsModalLabel" aria-hidden="true">
+                <div class="modal fade" id="commentsModal" tabindex="-1" aria-labelledby="commentsModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title text-primary" id="commentsModalLabel">Comments</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 {{-- Add Comment Section --}}
@@ -309,43 +313,15 @@
                                 {{-- Existing Comments --}}
                                 <h6 class="text-secondary">Previous Comments</h6>
                                 <div>
-                                    <p><strong>REC:</strong> Please ensure the methodology is detailed and clear. {{-- Feedback from REC --}}</p>
-                                    <p><strong>Researcher:</strong> I have updated the methodology section as per your request. {{-- Response from Researcher --}}</p>
+                                    <p><strong>REC:</strong> Please ensure the methodology is detailed and clear.
+                                        {{-- Feedback from REC --}}</p>
+                                    <p><strong>Researcher:</strong> I have updated the methodology section as per your
+                                        request. {{-- Response from Researcher --}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            {{-- Approved Tab Pane --}}
-            <div class="tab-pane fade" id="approved" role="tabpanel" aria-labelledby="approved-tab">
-                <h2 class="mb-4">Approved Proposals</h2>
-
-            {{-- Approved Proposals Table --}}
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Title</th>
-                            <th>Researcher</th>
-                            <th>Approval Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Data Privacy in Education</td>
-                            <td>Mary Johnson</td>
-                            <td>Nov 24, 2024</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>IoT in Smart Cities</td>
-                            <td>Chris Evans</td>
-                            <td>Nov 23, 2024</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </main>
 
@@ -353,4 +329,3 @@
 
     </div>
 </div>
-

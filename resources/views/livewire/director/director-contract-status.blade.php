@@ -71,147 +71,81 @@
         </nav>
 
         <main class="container-fluid p-4">
-            {{-- Tabs --}}
-            <ul class="nav nav-tabs mb-4" id="contractTabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="set-status-tab" data-bs-toggle="tab"
-                        data-bs-target="#set-status" type="button" role="tab" aria-controls="set-status"
-                        aria-selected="true">
-                        Set Status
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="signed-proposals-tab" data-bs-toggle="tab"
-                        data-bs-target="#signed-proposals" type="button" role="tab"
-                        aria-controls="signed-proposals" aria-selected="false">
-                        Signed Proposals
-                    </button>
-                </li>
-            </ul>
+            <h3 class="text-center mb-4 fw-bold">Set Contact Status</h3>
 
-            {{-- Tab Content --}}
-            <div class="tab-content" id="contractTabsContent">
-                {{-- Set Status Tab Pane --}}
-                <div class="tab-pane fade show active" id="set-status" role="tabpanel" aria-labelledby="set-status-tab">
-                    <div class="card shadow-sm p-3">
-                        <h4 class="mb-3">Set Contract Status</h4>
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Proposal ID</th>
-                                    <th>Title</th>
-                                    <th>Quarters Required</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{-- Example Data --}}
-                                <tr>
-                                    <td>12345</td>
-                                    <td>Research on AI</td>
-                                    <td>4</td>
-                                    <td>
-                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#setStatusModal">
-                                            Set Status
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                {{-- Signed Proposals Tab Pane --}}
-                <div class="tab-pane fade" id="signed-proposals" role="tabpanel" aria-labelledby="signed-proposals-tab">
-                    <div class="card shadow-sm p-3">
-                        <h4 class="mb-3">Signed Proposals</h4>
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Proposal ID</th>
-                                    <th>Title</th>
-                                    <th>Quarters Required</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{-- Example Data --}}
-                                <tr>
-                                    <td>67890</td>
-                                    <td>Data Analysis Study</td>
-                                    <td>3</td>
-                                    <td>
-                                        <button class="btn btn-info btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#viewProposalModal">
-                                            See Details
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            {{-- Contract Status Table --}}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Researcher</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Sample Research Title</td>
+                            <td>John Doe</td>
+                            <td>
+                                {{-- Set Status Button --}}
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#setStatusModal">
+                                    Set Status
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            {{-- Modals --}}
-            {{-- Set Status Modal --}}
-            <div class="modal fade" id="setStatusModal" tabindex="-1" aria-labelledby="setStatusModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+
+            {{-- Modal for Setting Status --}}
+            <div class="modal fade" id="setStatusModal" tabindex="-1" aria-labelledby="setStatusModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="setStatusModalLabel">Set Contract Status</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            {{-- Form for Setting Status --}}
+                            <form id="setStatusForm">
+                                {{-- Status Selection --}}
                                 <div class="mb-3">
-                                    <label for="proposalId" class="form-label">Proposal ID</label>
-                                    <input type="text" class="form-control" id="proposalId" value="12345"
-                                        readonly>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="contractStatus" class="form-label">Status</label>
-                                    <select class="form-select" id="contractStatus">
-                                        <option value="signed">Signed</option>
-                                        <option value="in-progress">In Progress</option>
-                                        <option value="completed">Completed</option>
+                                    <label for="status" class="form-label">Status</label>
+                                    <select class="form-select" id="status" required>
+                                        <option value="" selected disabled>Select Status</option>
+                                        <option value="Signed">Signed</option>
                                     </select>
                                 </div>
+
+                                {{-- Start Date --}}
                                 <div class="mb-3">
-                                    <label for="quartersRequired" class="form-label">Quarters Required</label>
-                                    <input type="number" class="form-control" id="quartersRequired" value="4"
-                                        readonly>
+                                    <label for="startDate" class="form-label">Start Date</label>
+                                    <input type="date" class="form-control" id="startDate" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
+
+                                {{-- Estimated End Date --}}
+                                <div class="mb-3">
+                                    <label for="endDate" class="form-label">Estimated End Date</label>
+                                    <input type="date" class="form-control" id="endDate" required>
+                                </div>
                             </form>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- View Proposal Modal --}}
-            <div class="modal fade" id="viewProposalModal" tabindex="-1" aria-labelledby="viewProposalModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="viewProposalModalLabel">Proposal Details</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p><strong>Proposal ID:</strong> 67890</p>
-                            <p><strong>Title:</strong> Data Analysis Study</p>
-                            <p><strong>Quarters Required:</strong> 3</p>
-                            <p><strong>Status:</strong> Signed</p>
+                        <div class="modal-footer">
+                            {{-- Save Button --}}
+                            <button type="button" class="btn btn-success" id="saveStatusButton">
+                                Save
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
+
 
     </div>
 </div>
