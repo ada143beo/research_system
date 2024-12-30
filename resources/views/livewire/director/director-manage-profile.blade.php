@@ -71,7 +71,124 @@
         </nav>
 
         <main class="container-fluid p-4">
+            {{-- Manage User Profiles --}}
+            <h3 class="text-center mb-4 fw-bold">Manage User Profiles</h3>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>johndoe@example.com</td>
+                            <td>Researcher</td>
+                            <td>
+                                {{-- View Button --}}
+                                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewUserModal">
+                                    View
+                                </button>
+                                {{-- Edit Button --}}
+                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                    Edit
+                                </button>
+                                {{-- Delete Button --}}
+                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            {{-- Modal for Viewing User Details --}}
+            <div class="modal fade" id="viewUserModal" tabindex="-1" aria-labelledby="viewUserModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="viewUserModalLabel">User Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h6><strong>Name:</strong></h6>
+                            <p>John Doe</p>
+                            <h6><strong>Email:</strong></h6>
+                            <p>johndoe@example.com</p>
+                            <h6><strong>Role:</strong></h6>
+                            <p>Researcher</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Modal for Editing User Details --}}
+            <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editUserModalLabel">Edit User Profile</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{-- Edit User Form --}}
+                            <form id="editUserForm">
+                                <div class="mb-3">
+                                    <label for="editUserName" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="editUserName" value="John Doe" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editUserEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="editUserEmail" value="johndoe@example.com" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editUserRole" class="form-label">Role</label>
+                                    <select class="form-select" id="editUserRole" required>
+                                        <option value="Researcher" selected>Researcher</option>
+                                        <option value="Reviewer">Reviewer</option>
+                                        <option value="Admin">Admin</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" id="saveEditButton">Save Changes</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Modal for Deleting User --}}
+            <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteUserModalLabel">Delete User</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to delete the profile of <strong>John Doe</strong>?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
+
 
     </div>
 </div>
